@@ -17,7 +17,8 @@ def test_automation_form():
     browser.element('[aria-label="Choose Sunday, January 9th, 2022"]').click()
     browser.element('[id="subjectsInput"]').type('Computer Science').press_enter()
     browser.element('[for="hobbies-checkbox-2"]').click()
-    browser.element('[id="uploadPicture"]').send_keys(os.path.abspath('../files/Toolsqa.jpg'))
+    browser.element('[id="uploadPicture"]').send_keys((os.path.abspath(
+        os.path.join(os.path.dirname(__file__), os.path.pardir, 'files/Toolsqa.jpg'))))
     browser.element('[id="currentAddress"]').should(be.blank).type('Mars')
     browser.element('[id="react-select-3-input"]').type('NCR').press_enter()
     browser.element('[id="react-select-4-input"]').type('Delhi').press_enter()
