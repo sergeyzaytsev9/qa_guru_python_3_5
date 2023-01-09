@@ -4,8 +4,6 @@ from demoqa_tests.model import controls
 from demoqa_tests.model.controls import dropdown, modal, datepicker, checkbox, radiobutton
 from demoqa_tests.utils import path
 
-state = browser.element('#state')
-
 
 def given_opened():
     browser.open('/automation-practice-form').driver.maximize_window()
