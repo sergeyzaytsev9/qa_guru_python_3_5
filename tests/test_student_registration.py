@@ -1,26 +1,36 @@
-from demoqa_tests.model.data.Student import test_zaytsev
-from demoqa_tests.model.pages.registration_form import PracticePage
+from demoqa_tests.model.pages import registration_form
 
 
 def test_student_registration_form():
-    practice_form = PracticePage(test_zaytsev)
+    registration_form.given_opened()
 
     # WHEN
-    practice_form.given_opened()
-    practice_form.set_name()
-    practice_form.set_last_name()
-    practice_form.set_email()
-    practice_form.set_gender()
-    practice_form.set_phone_number()
-    practice_form.set_birthday()
-    practice_form.set_subjects()
-    practice_form.set_hobbies()
-    practice_form.picture_upload()
-    practice_form.set_address()
-    practice_form.set_state()
-    practice_form.set_city()
+    registration_form.set_name('Sergey')
+    registration_form.set_last_name('Engineer')
+    registration_form.set_email('test@demoqa.com')
+    registration_form.set_gender('Male')
+    registration_form.set_phone_number('1234567890')
+    registration_form.set_birthday('4', '1994', '02')
+    registration_form.set_subjects('Computer Science')
+    registration_form.set_hobbies('Reading')
+    registration_form.picture_upload('files/Toolsqa.jpg')
+    registration_form.set_address('Pushkina 8')
+    registration_form.set_state('NCR')
+    registration_form.set_city('Delhi')
 
-    practice_form.submit()
+    registration_form.submit()
 
     # THEN
-    practice_form.should_have_submitted()
+    registration_form.should_have_submitted(
+        [
+            ('Student Name', 'Sergey Engineer'),
+            ('Student Email', 'test@demoqa.com'),
+            ('Mobile', '1234567890'),
+            ('Date of Birth', '02 May,1994'),
+            ('Subjects', 'Computer Science'),
+            ('Hobbies', 'Reading'),
+            ('Picture', 'Toolsqa.jpg'),
+            ('Address', 'Pushkina 8'),
+            ('State', 'NCR Delhi'),
+        ],
+    )
