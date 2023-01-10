@@ -21,6 +21,5 @@ def test_student_registration_form():
     practice_form.set_city()
 
     practice_form.submit()
-
     # THEN
     practice_form.should_have_submitted()
